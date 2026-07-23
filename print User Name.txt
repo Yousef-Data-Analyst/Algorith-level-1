@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+void printUserName(const string &name)
+{
+    cout << "Your name is: " << name << endl;
+}
+
+int main()
+{
+    printUserName("Yousef Awaad");
+    return 0;
+}

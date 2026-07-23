@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+enum enEvenOrOdd
+{
+    Even = 0,
+    Odd = 1
+};
+
+int readIntNumber(const string &message)
+{
+    cout << message;
+    int number;
+    cin >> number;
+    return number;
+}
+
+enEvenOrOdd checkEvenOrOdd(const int &number)
+{
+    if (number % 2 == 0)
+        return enEvenOrOdd::Even;
+    else
+        return enEvenOrOdd::Odd;
+}
+
+void printEvenOrOdd(enEvenOrOdd number)
+{
+    if (number == enEvenOrOdd::Even)
+        cout << number << " is Even \n";
+    else
+        cout << number << " is Odd\n";
+}
+
+
+int main()
+{
+    printEvenOrOdd(checkEvenOrOdd(readIntNumber("Enter a number to check: ")));
+    return 0;
+}

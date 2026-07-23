@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+
+struct UserName
+{
+    string fName, lName;
+};
+
+UserName readUserName()
+{
+    UserName fullName;
+    cout << "Enter your first name: ";
+    cin >> fullName.fName;
+    cout << "Enter your last name: ";
+    cin >> fullName.lName;
+    return fullName;
+}
+
+string getFullName(const UserName &userName, bool reversed = false)
+{
+    return (reversed) ? userName.lName + " " + userName.fName : userName.fName + " " + userName.lName;
+}
+
+void printFullName(const string &name)
+{
+    cout << "\n*********************************" << endl;
+    cout << "Full name is: " << name << endl
+         << endl;
+}
+
+int main()
+{
+    printFullName(getFullName(readUserName()));
+    return 0;
+}

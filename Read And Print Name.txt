@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+string getUserName(const string message)
+{
+    cout << message;
+    string name;
+    getline(cin, name);
+    return name;
+}
+
+void printUserName(const string &name)
+{
+    cout << "Your name is: " << name << endl;
+}
+
+int main()
+{
+   printUserName(getUserName("Enter your name: "));
+    return 0;
+}

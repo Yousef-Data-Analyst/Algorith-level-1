@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void readDistances(float &diagonal, float &side)
+{
+    cout << "Enter the diagonal length: ";
+    cin >> diagonal;
+    cout << "Enter a side length: ";
+    cin >> side;
+}
+
+float calculateArea(float diagonal, float side)
+{
+    return side * sqrt(pow(diagonal, 2) - pow(side, 2));
+}
+
+void printResult(float res)
+{
+    cout << "************************************"
+         << endl;
+    cout << "Area: " << res << endl;
+}
+int main()
+{
+    float diagonal, side;
+
+    readDistances(diagonal, side);
+    printResult(calculateArea(diagonal, side));
+    return 0;
+}

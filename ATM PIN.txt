@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+int readPinCode()
+{
+    int code;
+    cout << "Enter your PIN: ";
+    cin >> code;
+    return code;
+}
+
+bool readUntilCorrect()
+{
+    int code = readPinCode();
+    while (code != 1234)
+    {
+        cout << "Wrong PIN" << endl;
+        system("color 4F");
+        code = readPinCode();
+    }
+    return true;
+}
+
+void displayBalance()
+{
+    if (readUntilCorrect())
+    {
+        system("color 2F");
+        cout << "*******************************"
+             << endl
+             << endl;
+        cout << "Your Balance is " << 7500 << endl
+             << endl;
+    }
+}
+
+int main()
+{
+    displayBalance();
+    return 0;
+}

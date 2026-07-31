@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+using namespace std;
+
+int readNumber(const string &message)
+{
+    cout << message;
+    int number;
+    cin >> number;
+    return number;
+}
+
+bool isPrime(int number)
+{
+    number = abs(number);
+    if (number == 1)
+        return false;
+    if (number == 2)
+        return true;
+    if (number % 2 == 0)
+        return false;
+    for (int i = 3; i <= sqrt(number); i++)
+
+        if (number % i == 0)
+            return false;
+
+return true;
+}
+
+void printPrimeOrNot(int number)
+{
+    cout << endl
+         << "******************************" << endl
+         << endl;
+    (isPrime(number)) ? cout << "Number: " << number << " is prime." << endl : cout << "Number: " << number << " isn't Prime." << endl;
+}
+
+int main()
+{
+    printPrimeOrNot(readNumber("Enter a number to check if prime: "));
+    return 0;
+}

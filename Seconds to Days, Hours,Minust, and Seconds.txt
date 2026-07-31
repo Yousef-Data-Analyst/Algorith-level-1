@@ -1,0 +1,52 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+int readNonNegative(const string &message)
+{
+    int number;
+    do
+    {
+        cout << message;
+        cin >> number;
+    } while (number < 0);
+    return number;
+}
+
+int calculateDays(long seconds)
+{
+    return seconds / 60 / 60 / 24;
+}
+
+int calculateHours(long seconds)
+{
+    return (seconds / (60 * 60)) % 24;
+}
+
+int calculateMinutes(long seconds)
+{
+    return (seconds / 60) % 60;
+}
+int calculateSeconds(long seconds)
+{
+    return seconds % 60;
+}
+
+void printDuration(long seconds)
+{
+    cout << "**************************************" << endl
+         << endl;
+    cout << "Duration (DD:HH:MM:SS): " << setw(2) << setfill('0') << calculateDays(seconds) << ":"
+         << setw(2) << setfill('0') << calculateHours(seconds) << ":"
+         << setw(2) << setfill('0') << calculateMinutes(seconds) << ":"
+         << setw(2) << setfill('0') << calculateSeconds(seconds) << endl;
+}
+
+int main()
+{
+    printDuration(readNonNegative("Enter the total Seconds: "));
+
+    return 0;
+}

@@ -1,0 +1,47 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+using namespace std;
+
+int readNumber(const string &message)
+{
+    cout << message;
+    int number;
+    cin >> number;
+    return number;
+}
+
+long sumNumbers(long &sum, long &count)
+{
+    int number = readNumber("Enter number " + to_string(count) + ": ");
+    if (number != -99)
+    {
+        sum += number;
+        count++;
+        sumNumbers(sum, count);
+    }
+    return sum;
+    // int number = readNumber("Enter number 1: ");
+    // long sum = 0;
+    // int count = 1;
+    // while (number != -99)
+    // {
+    //     count++;
+    //     sum += number;
+    //     number = readNumber("Enter number " + to_string(count) + ": ");
+    // }
+    // return sum;
+}
+
+void printSummition(long sum)
+{
+    cout << "\n****************************************\n\n";
+    cout << "The sum is: " << sum << endl;
+}
+
+int main()
+{
+    long sum = 0, count = 1;
+    printSummition(sumNumbers(sum, count));
+    return 0;
+}

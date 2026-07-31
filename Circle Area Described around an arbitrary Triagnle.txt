@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void readDistances(float &a, float &b, float &c)
+{
+    cout << "Enter side A: ";
+    cin >> a;
+    cout << "Enter side B: ";
+    cin >> b;
+    cout << "Enter side C: ";
+    cin >> c;
+}
+
+float calculateCircleArea(float a, float b, float c)
+{
+    const double PI = 3.14159265;
+    const float p = (a + b + c) / 2.0;
+    return PI * pow((a * b * c) / (4 * sqrt(p * (p - a) * (p - b) * (p - c))), 2);
+}
+
+void printResult(float res)
+{
+    cout << "*********************************\n";
+    cout << "Circle Area: " << res << endl;
+}
+int main()
+{
+    float a, b, c;
+    readDistances(a, b, c);
+    printResult(calculateCircleArea(a, b, c));
+    return 0;
+}

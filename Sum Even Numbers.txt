@@ -1,0 +1,66 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+enum EvenOrOdd
+{
+    Even = 0,
+    Odd = 1
+};
+
+int readNumber(const string &message)
+{
+    cout << message;
+    int number;
+    cin >> number;
+    return number;
+}
+
+EvenOrOdd CheckEvenOrOdd(int number)
+{
+    return (number % 2 == 0) ? EvenOrOdd::Even : EvenOrOdd::Odd;
+}
+
+void sumNumbersFrom1_to_N_UsingDoWhile(int n)
+{
+    int sum = 0, counter = 1;
+    do
+    {
+        sum += (CheckEvenOrOdd(counter) == EvenOrOdd::Even) ? counter : 0;
+        counter++;
+    } while (counter <= n);
+    cout << "Sum: " << sum << endl;
+}
+
+void sumNumbersFrom1_to_N_UsingWhile(int n)
+{
+    int sum = 0, counter = 0;
+    while (counter < n)
+    {
+        sum += (CheckEvenOrOdd(++counter) == EvenOrOdd::Even) ? counter : 0;
+    }
+    cout << "Sum: " << sum << endl;
+}
+
+void sumNumbersFrom1_to_N_UsingFor(int n)
+{
+    int sum = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        if (CheckEvenOrOdd(i) == EvenOrOdd::Even)
+            sum += i;
+    }
+    cout << "Sum: " << sum << endl;
+}
+
+int main()
+{
+    int n = readNumber("Enter a number: ");
+    sumNumbersFrom1_to_N_UsingDoWhile(n);
+    cout << "*********************************\n";
+    sumNumbersFrom1_to_N_UsingWhile(n);
+    cout << "*********************************\n";
+    sumNumbersFrom1_to_N_UsingFor(n);
+
+    return 0;
+}

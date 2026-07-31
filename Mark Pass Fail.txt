@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+
+enum StudentStatus
+{
+    Pass = 1,
+    Failed = 0
+};
+
+
+float readMark(const string &message)
+{
+    cout << message;
+    float mark;
+    cin >> mark;
+    return mark;
+}
+
+StudentStatus checkMark(float mark)
+{
+    return (mark >= 50) ? StudentStatus::Pass : StudentStatus::Failed;
+}
+
+void printStatusRes(StudentStatus status)
+{
+    cout << "\n***********************************\n\n";
+    if (status == StudentStatus::Pass)
+        cout << "Passed :)";
+    else
+        cout << "Failed :( .";
+}
+
+
+int main()
+{
+    printStatusRes(checkMark(readMark("Enter your mark to check (pass or fail): ")));
+    return 0;
+}

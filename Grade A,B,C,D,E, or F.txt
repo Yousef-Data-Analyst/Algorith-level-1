@@ -1,0 +1,67 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+float readNumber(const string &message)
+{
+    cout << message;
+    float number;
+    cin >> number;
+    return number;
+}
+bool isMark(float mark)
+{
+    return mark <= 100 && mark >= 0;
+}
+
+float readValidMark()
+{
+    float mark;
+    do
+    {
+        mark = readNumber("Enter your \'POSITIVE\' mark  to check :) : ");
+    } while (!isMark(mark));
+    return mark;
+}
+
+char getMark(float mark)
+{
+    if (mark >= 90)
+        return 'A';
+    else if (mark >= 80)
+        return 'B';
+    else if (mark >= 70)
+        return 'C';
+    else if (mark >= 60)
+        return 'D';
+    else if (mark >= 50)
+        return 'E';
+    else
+        return 'F';
+}
+
+float readNumberInRange(float from, float to)
+{
+    float number;
+    do
+    {
+        cout << "Please, Enter a grade between (0 and 100): ";
+        cin.ignore();
+        cin >> number;
+    } while (!(number >= from && number <= to));
+    return number;
+}
+
+void printMark(float mark)
+{
+    cout << "\n************************************\n\n";
+    cout << "Your grade is " << getMark(mark) << " ." << endl
+         << endl;
+}
+int main()
+{
+    printMark(readValidMark());
+    cout << "*********************Second Approach**********************\n\n";
+    printMark(readNumberInRange(0, 100));
+    return 0;
+}

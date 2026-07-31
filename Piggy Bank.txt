@@ -1,0 +1,51 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+struct Money
+{
+    float pennies;
+    float nickles;
+    float dimes;
+    float quarters;
+    float dollars;
+};
+
+void readMoney(Money &money)
+{
+    cout << "Enter the Pennies: ";
+    cin >> money.pennies;
+    cout << "Enter the Nickles: ";
+    cin >> money.nickles;
+    cout << "Enter the Dimes: ";
+    cin >> money.dimes;
+    cout << "Enter the Quarters: ";
+    cin >> money.quarters;
+    cout << "Enter the Dollars: ";
+    cin >> money.dollars;
+}
+
+float calculatePennies(Money money)
+{
+    return money.pennies + money.nickles * 5 + money.dimes * 10 + money.quarters * 25 + money.dollars * 100;
+}
+
+float calculateDollars(Money money)
+{
+    return calculatePennies(money) / 100;
+}
+
+void printResult(Money money)
+{
+    cout << "\n********************************\n\n";
+    cout << "Total Pennies: " << calculatePennies(money) << endl;
+    cout << "Total Dollars: " << calculateDollars(money) << endl;
+}
+
+int main()
+{
+    Money money;
+    readMoney(money);
+    printResult(money);
+    return 0;
+}

@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int readNumber(const string &message)
+{
+    cout << message;
+    int number;
+    cin >> number;
+    return number;
+}
+
+void powerOf2_3_4(int number)
+{
+    cout << number << "^2 = " << number * number << endl;
+    cout << number << "^3 = " << number * number * number << endl;
+    cout << number << "^4 = " << number * number * number * number << endl;
+}
+
+int main()
+{
+
+    powerOf2_3_4(readNumber("Ente a number to get it's power: "));
+    return 0;
+}

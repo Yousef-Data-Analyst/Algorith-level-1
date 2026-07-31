@@ -1,0 +1,63 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+enum WeekDays
+{
+    Sun = 1,
+    Mon = 2,
+    Tue = 3,
+    Wed = 4,
+    Thu = 5,
+    Fri = 6,
+    Sat = 7
+};
+
+WeekDays readDayBetween(int from, int to)
+{
+    int day;
+    do
+    {
+        cout << "Enter day number 1 to 7: ";
+        cin >> day;
+    } while (!(day <= to && day >= from));
+    return (WeekDays)day;
+}
+
+string getDay(WeekDays day)
+{
+    switch (day)
+    {
+    case WeekDays::Fri:
+        return "Friday";
+    case WeekDays::Mon:
+        return "Monday";
+    case WeekDays::Sat:
+        return "Saturday";
+    case WeekDays::Sun:
+        return "Sunday";
+    case WeekDays::Thu:
+        return "Thursday";
+    case WeekDays::Tue:
+        return "Tuesday";
+    case WeekDays::Wed:
+        return "Wednesday";
+    default:
+        return "Friday";
+    }
+}
+
+void printDay(WeekDays day)
+{
+    cout << "*****************************" << endl
+         << endl;
+    cout << getDay(day) << " (Day " << day << ")" << endl;
+}
+
+int main()
+{
+    printDay(readDayBetween(1, 7));
+    return 0;
+}

@@ -1,0 +1,56 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+float readNonNegative(const string &message)
+{
+    float number;
+    do
+    {
+    cout << message;
+    
+    cin >> number;
+    }while (number < 0);
+    return number;
+}
+
+struct BankAccount
+{
+    float loanAmount;
+    float monthlyInstallment;
+};
+
+BankAccount readData()
+{
+    BankAccount account;
+    account.loanAmount = readNonNegative("Enter the loan amount: ");
+    account.monthlyInstallment = readNonNegative("Enter the monthly installment: ");
+    return account;
+}
+
+float calculatePaymentMonths(const BankAccount &account)
+{
+    return ceil(account.loanAmount / account.monthlyInstallment);
+}
+
+void displayAccountData(const BankAccount &account)
+{
+    cout << "************************************" << endl
+         << endl;
+    cout << "Loan Amount: " << account.loanAmount << endl;
+    cout << "Monthly Installment: " << account.monthlyInstallment << endl;
+    cout << endl
+         << "************************************" << endl
+         << endl;
+    cout << "Total Payment Months: " << calculatePaymentMonths(account) << endl;
+}
+
+int main()
+{
+    BankAccount account;
+    account = readData();
+    displayAccountData(account);
+    return 0;
+}

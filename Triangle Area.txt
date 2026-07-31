@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void readDistances(float &height, float &width)
+{
+    cout << "Enter the Height:  ";
+    cin >> height;
+    cout << "Enter the width: ";
+    cin >> width;
+}
+
+float calculateTriangleArea(float height, float width)
+{
+    return .5 * width * height;
+}
+
+void printResult(float res)
+{
+    cout << "************************************"
+         << endl;
+    cout << "Area: " << res << endl;
+}
+int main()
+{
+    float height, width;
+
+    readDistances(height, width);
+    printResult(calculateTriangleArea(height, width));
+    return 0;
+}

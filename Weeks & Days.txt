@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+int readNonNegative(const string &message)
+{
+    int number;
+    do
+    {
+        cout << message;
+        cin >> number;
+    } while (number < 0);
+    return number;
+}
+
+float calculateDays(int hours)
+{
+    return hours / 24.0;
+}
+
+float calculateWeeks(int hours)
+{
+    return calculateDays(hours) / 7;
+}
+
+int main()
+{
+    int hours = readNonNegative("Enter the total number of hours: ");
+    cout << fixed << setprecision(2) << "Equivalent Days: " << calculateDays(hours) << endl;
+    cout << fixed << setprecision(2) << "Equivalent Weeks: " << calculateWeeks(hours) << endl;
+
+    return 0;
+}

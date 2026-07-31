@@ -1,0 +1,51 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+int readPinCode(const string &message)
+{
+    int code;
+    cout << message;
+    cin >> code;
+    return code;
+}
+
+bool readUntilCorrect()
+{
+    int count = 3;
+    int code = readPinCode("Enter your PIN: ");
+    while (code != 1234 && --count > 0)
+    {
+
+        cout << "\n\nWrong PIN, you have " + to_string(count) << " trials Left." << endl;
+        system("color 4F");
+        code = readPinCode("Enter your PIN: ");
+    }
+
+    return code == 1234;
+}
+
+void displayBalance()
+{
+    if (readUntilCorrect())
+    {
+        system("color 2F");
+        cout << "*******************************"
+             << endl
+             << endl;
+        cout << "Your Balance is " << 7500 << endl
+             << endl;
+    }
+    else
+    {
+        cout << " Your card is blocked" << endl;
+    }
+}
+
+int main()
+{
+    displayBalance();
+    return 0;
+}

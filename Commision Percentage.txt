@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+float readSales(const string &message)
+{
+    cout << message;
+    float sales;
+    cin >> sales;
+    return sales;
+}
+
+float getCommissionPercentage(float totalSales)
+{
+
+    if (totalSales > 1000000)
+        return .01;
+    else if (totalSales > 500000)
+        return .02;
+    else if (totalSales >= 100000)
+        return .03;
+    else if (totalSales >= 50000)
+        return .05;
+    else
+        return 0.00;
+}
+
+float calculateCommission(float totalSales)
+{
+    return totalSales * getCommissionPercentage(totalSales);
+}
+
+void printCommission(float totalSales)
+{
+    cout << "\n************************************\n\n";
+    cout << "Your commission for " << totalSales << " $ is " << calculateCommission(totalSales) << " $ With Percentage of " << getCommissionPercentage(totalSales) * 100 << "% " << " ." << endl
+         << endl;
+}
+int main()
+{
+    printCommission(readSales("Enter the total sales: "));
+    return 0;
+}

@@ -1,0 +1,63 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+using namespace std;
+
+struct Receipt
+{
+    double bill;
+    double serviceFee = .10; // 10%
+    double salesTax = .16;   // 16%
+};
+
+double readPositiveNumber(const string &message)
+{
+    double number = 0;
+    do
+    {
+        cout << message;
+        cin >> number;
+    } while (number < 0);
+    return number;
+}
+
+void readReceipt(Receipt &receipt)
+{
+    receipt.bill = readPositiveNumber("Enter the bill: ");
+}
+
+double calculateServiceFee(const Receipt &receipt)
+{
+    return receipt.serviceFee * receipt.bill;
+}
+
+double calculateSalesTax(const Receipt &receipt)
+{
+    return (receipt.bill + calculateServiceFee(receipt)) * receipt.salesTax;
+}
+
+double calculateReceipt(const Receipt &receipt)
+{
+    return receipt.bill + calculateSalesTax(receipt) + calculateServiceFee(receipt);
+}
+
+void printReceipt(const Receipt &receipt)
+{
+    cout << endl
+         << endl;
+    cout << "Bill: " << receipt.bill << endl;
+    cout << "Service fee " << receipt.serviceFee * 100 << "%" << " : " << calculateServiceFee(receipt) << endl;
+    cout << "Sales tax " << receipt.salesTax * 100 << "%" << " : " << calculateSalesTax(receipt) << endl;
+    cout << endl
+         << "*********************************" << endl
+         << endl;
+    cout << "Total Bill: " << calculateReceipt(receipt) << endl;
+}
+int main()
+{
+    Receipt receipt;
+    readReceipt(receipt);
+    printReceipt(receipt);
+
+    return 0;
+}

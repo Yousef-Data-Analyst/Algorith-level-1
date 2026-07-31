@@ -1,0 +1,28 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+float readCircumference()
+{
+    float circumference;
+    cout << "Enter the square length: ";
+    cin >> circumference;
+    return circumference;
+}
+
+float calculateCircleArea(float circuference)
+{
+    return pow(circuference, 2) / (4 * 3.14159265);
+}
+
+void printResult(float res)
+{
+    cout << "*********************************\n";
+    cout << "Circle Area: " << res << endl;
+}
+int main()
+{
+
+    printResult(calculateCircleArea(readCircumference()));
+    return 0;
+}

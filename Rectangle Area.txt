@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+void readNumbers(float &length, float &width)
+{
+    cout << "Enter the length: ";
+    cin >> length;
+    cout << "Enter the width: ";
+    cin >> width;
+}
+
+float calcualteRectanleArea(float num1, float num2)
+{
+    return num1 * num2;
+}
+
+void printResult(float area)
+{
+    cout << "**********************************" << endl;
+    cout << "Area: " << area << endl;
+}
+
+int main()
+{
+    float length, width;
+    readNumbers(length, width);
+    printResult(calcualteRectanleArea(length, width));
+    return 0;
+}

@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int readNumber(const string &message)
+{
+    cout << message;
+    int number;
+    cin >> number;
+    return number;
+}
+
+double calculatePower(int num, int power)
+{
+    if (num == 0 && power < 0)
+    {
+        cout << " Error: 0 Can not be raised to negative numbers :>.";
+        return 0;
+    }
+    double p = 1;
+    for (int i = 0; i < abs(power); i++)
+    {
+        if (power > 0)
+            p *= num;
+        else
+            p /= float(num);
+    }
+    return p;
+}
+
+void getPower()
+{
+    int number = readNumber("Enter the Number: ");
+    int power = readNumber("Enter the Power: ");
+    cout << "\n***********************************\n\n";
+    cout << number << " ^ " << power << " = " << calculatePower(number, power) << endl;
+}
+
+int main()
+{
+    getPower();
+
+    return 0;
+}

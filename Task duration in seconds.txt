@@ -1,0 +1,48 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+struct Duartion
+{
+    int days;
+    int hours;
+    int minutes;
+    int seconds;
+};
+
+int readNonNegative(const string &message)
+{
+    int number;
+    do
+    {
+        cout << message;
+        cin >> number;
+    } while (number < 0);
+    return number;
+}
+
+void readDuration(Duartion &duration)
+{
+    duration.days = readNonNegative("Enter the total days: ");
+    duration.hours = readNonNegative("Enter the total hours: ");
+    duration.minutes = readNonNegative("Enter the total minutes: ");
+    duration.seconds = readNonNegative("Enter the total seconds: ");
+}
+
+long calcuateSeconds(const Duartion &duration)
+{
+    return duration.days * 24 * 60 * 60 + duration.hours * 60 * 60 + duration.minutes * 60 + duration.seconds;
+}
+
+int main()
+{
+    Duartion duration;
+    readDuration(duration);
+    cout << "**************************************" << endl
+         << endl;
+    cout << "Total seconds: " << calcuateSeconds(duration) << endl;
+
+    return 0;
+}

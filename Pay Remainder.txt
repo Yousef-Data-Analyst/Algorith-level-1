@@ -1,0 +1,52 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+using namespace std;
+
+struct Receipt
+{
+    double totalBill;
+    double cashPaid;
+};
+
+double readPositiveNumber(const string &message)
+{
+    double number = 0;
+    do
+    {
+        cout << message;
+        cin >> number;
+    } while (number < 0);
+    return number;
+}
+
+void readReceipt(Receipt &receipt)
+{
+    receipt.totalBill = readPositiveNumber("Enter the total bill: ");
+    receipt.cashPaid = readPositiveNumber("Enter the total cash paid: ");
+}
+
+double calculateRemainder(const Receipt &receipt)
+{
+    return receipt.cashPaid - receipt.totalBill;
+}
+
+void printChange(const Receipt &receipt)
+{
+    cout << endl
+         << endl;
+    cout << "Total bill: " << receipt.totalBill << endl;
+    cout << "Total cash paid: " << receipt.cashPaid << endl;
+    cout << endl
+         << "*********************************" << endl
+         << endl;
+    cout << "Change due: " << calculateRemainder(receipt) << endl;
+}
+int main()
+{
+    Receipt receipt;
+    readReceipt(receipt);
+    printChange(receipt);
+
+    return 0;
+}

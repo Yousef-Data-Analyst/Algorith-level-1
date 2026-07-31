@@ -1,0 +1,65 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+enum EvenOrOdd
+{
+    Even = 0,
+    Odd = 1
+};
+
+int readNumber(const string &message)
+{
+    cout << message;
+    int number;
+    cin >> number;
+    return number;
+}
+
+EvenOrOdd DetermineEvenOdd(int number)
+{
+    return (number % 2 == 0) ? EvenOrOdd::Even : EvenOrOdd::Odd;
+}
+
+void sumOddsDoWhile(int n)
+{
+    int sum = 0, counter = 1;
+    do
+    {
+        sum += (DetermineEvenOdd(counter) == EvenOrOdd::Even) ? 0 : counter;
+        counter++;
+    } while (counter <= n);
+    cout << "Sum (DoWhile): " << sum << endl;
+}
+
+void sumOddsWhile(int n)
+{
+    int sum = 0, counter = 0;
+    while (counter < n)
+    {
+        sum += (DetermineEvenOdd(++counter) == EvenOrOdd::Even) ? 0 : counter;
+    }
+    cout << "Sum (While): " << sum << endl;
+}
+
+void sumOddsFor(int n)
+{
+    int sum = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        sum += (DetermineEvenOdd(i) == EvenOrOdd::Odd) ? i : 0;
+    }
+    cout << "Sum (For): " << sum << endl;
+}
+
+int main()
+{
+    int n = readNumber("Enter a number: ");
+    sumOddsDoWhile(n);
+    cout << "*********************************\n";
+    sumOddsWhile(n);
+    cout << "*********************************\n";
+    sumOddsFor(n);
+
+    return 0;
+}

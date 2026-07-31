@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int readNumber()
+{
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+    return number;
+}
+
+void printNumbersFromN_to_1_UsingDoWhile(int n)
+{
+    int counter = n;
+    do
+    {
+        cout << counter << endl;
+        counter--;
+    } while (counter >= 1);
+}
+
+void printNumbersFromN_to_1_UsingWhile(int n)
+{
+    int counter = n;
+    while (counter >= 1)
+    {
+        cout << counter-- << endl;
+    }
+}
+
+void printNumberFromN_to_1_UsingFor(int n)
+{
+    for (int i = n; i >= 1; i--)
+    {
+        cout << i << endl;
+    }
+}
+
+int main()
+{
+    int n = readNumber();
+    printNumbersFromN_to_1_UsingDoWhile(n);
+    cout << "\n******************************\n";
+    printNumbersFromN_to_1_UsingWhile(n);
+    cout << "\n********************************\n";
+    printNumberFromN_to_1_UsingFor(n);
+    return 0;
+}

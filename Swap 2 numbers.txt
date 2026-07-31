@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+
+int readIntNumber(const string &message)
+{
+    cout << message;
+    int number;
+    cin >> number;
+    return number;
+}
+
+void read2Numbers(int &num1, int &num2)
+{
+    num1 = readIntNumber("Enter the first number: ");
+    num2 = readIntNumber("Enter the second number: ");
+}
+
+void swap2Numbers(int &num1, int &num2)
+{
+    int tmp = num1;
+    num1 = num2;
+    num2 = tmp;
+}
+
+void printResult(int num1, int num2)
+{
+    cout << "********************************\n";
+    cout << "Num1: " << num1 << endl
+         << "Num2: " << num2 << endl;
+}
+
+
+int main()
+{
+    int num1,num2;
+    read2Numbers(num1,num2);
+    swap2Numbers(num1,num2);
+    printResult(num1,num2);
+
+    return 0;
+}

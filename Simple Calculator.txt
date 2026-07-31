@@ -1,0 +1,72 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+enum Operation
+{
+    Subtraction = '-',
+    Addition = '+',
+    Multiplication = '*',
+    Division = '/'
+};
+
+struct Equation
+{
+    float num1;
+    float num2;
+    Operation operation;
+};
+
+Equation readEquation(Equation equation)
+{
+    cout << "Enter the first Number: ";
+    cin >> equation.num1;
+
+    cout << "Enter the Second Number: ";
+    cin >> equation.num2;
+
+    char operation;
+    do
+    {
+        cout << "Enter Operation (+,-,*, or /): ";
+        cin >> operation;
+    } while (!(operation == '-' || operation == '+' || operation == '*' || operation == '/'));
+
+    equation.operation = (Operation)operation;
+    return equation;
+}
+
+float calculateEquation(Equation equation)
+{
+    switch (equation.operation)
+    {
+    case Operation::Addition:
+        return equation.num1 + equation.num2;
+    case Operation::Subtraction:
+        return equation.num1 - equation.num2;
+    case Operation::Multiplication:
+        return equation.num1 * equation.num2;
+    case Operation::Division:
+        if (equation.num2 != 0)
+            return equation.num1 / equation.num2;
+        else
+            cout << "Error Dvision by ";
+        return 0;
+    default:
+        return 0;
+    }
+}
+
+void printResult(Equation equation)
+{
+    cout << endl
+         << "*********************************" << endl
+         << endl;
+    cout << equation.num1 << " " << (char)equation.operation << " " << equation.num2 << " = " << calculateEquation(equation);
+}
+int main()
+{
+    Equation equation;
+    printResult(readEquation(equation));
+    return 0;
+}
